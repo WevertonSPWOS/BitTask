@@ -9,23 +9,25 @@ import { ProjetoGlobal } from '../../context/projetoContext'
 import { BotaoEnviar } from '../button/botao'
 import RadioCompo from '../form/radio'
 
-
-export const ModalApresentarP = ({aberto, fechado,dados}) => {
+export const ModalApresentarP = ({aberto, fechado,dados,f}) => {
     const {EditarProj, DeletarProj} = useContext(ProjetoGlobal)
     const [desabilitado, setDesabilitado] = React.useState(true)
-    const id = dados.id
-    async function handleSubmit(){
-        const teste = await EditarProj(form,dados.id)
-        console.log(teste)
-    }
-    function UseEditar (event){
-        event.preventDefault()
-      
-        setDesabilitado(!desabilitado)
+
+    async function handleEditar(){
+        const req = await EditarProj(form, dados.id)
+        console.log(req)
     }
 
-    function UseExcluir(event){
+    //habilita a edição 
+    function UseEditar (event){
         event.preventDefault()
+        setDesabilitado(!desabilitado)
+    }
+    // exclui um projeto
+    async function UseExcluir(event){
+        event.preventDefault()
+        const req = await DeletarProj(dados.id)
+        console.log(req)
         
     }
 
@@ -81,7 +83,7 @@ export const ModalApresentarP = ({aberto, fechado,dados}) => {
                         <CardTarefas disabled={desabilitado} dados={data} setDados={setData} titulo="Tarefas" fundo="#F6F6F6" />
                     </section>
                 }
-                {!desabilitado && <BotaoEnviar f={handleSubmit} texto='FINALIZAR'/>}
+                {!desabilitado && <BotaoEnviar f={handleEditar} texto='FINALIZAR'/>}
 
  
 

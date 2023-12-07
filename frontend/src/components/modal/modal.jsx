@@ -45,7 +45,7 @@ export const ModalEnviarProjeto = ({aberto, sair}) =>{
         descricao : "",
         categoria : ""
     })
-    console.log(dados)
+
     function onChange({target}){
         setDados({...dados, [target.id] : target.value})
     }
