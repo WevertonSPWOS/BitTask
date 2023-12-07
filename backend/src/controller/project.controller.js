@@ -41,7 +41,7 @@ const pegarTodos = async (req, res) => {
 
   try {
     // Busca todos os projetos do usuário
-    const projetos = await Project.find({ usuario: usuarioId });
+    const projetos = await Project.find({ usuario: usuarioId._id });
 
     res.send(projetos);
   } catch (error) {
