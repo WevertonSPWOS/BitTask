@@ -1,7 +1,7 @@
 # BitTask 📝✨
 
 ## Sobre o projeto
-<p>Bem-vindo ao site da BitTask  - sua solução elegante e eficiente para gerenciar tarefas e projetos de forma simples e intuitiva. Desenvolvido utilizando a famosa stack MERN (MongoDB, Express, React, Node.js), este projeto oferece um CRUD com sistema de cadastro e login de usuários, permitindo que os usuários visualizem, criem, atualizem e excluam suas respectivas tarefas e projetos com datas de entrega personalizadas.</p>
+<p>Bem-vindo ao site da BitTask  - sua solução elegante e eficiente para gerenciar tarefas e projetos de forma simples e intuitiva. Desenvolvido utilizando a famosa stack MERN (MongoDB, Express, React, Node.js), juntamente ao Docker. Este projeto oferece um CRUD com sistema de cadastro e login de usuários, permitindo que os usuários visualizem, criem, atualizem e excluam suas respectivas tarefas e projetos com datas de entrega personalizadas.</p>
  
 
 
@@ -21,6 +21,7 @@
   <li>Express: Framework web para construir APIs robustas em Node.js.</li>
   <li>React: Biblioteca JavaScript para construção de interfaces de usuário interativas.</li>
   <li>Node.js: Ambiente de execução JavaScript do lado do servidor.</li>
+  <li>Docker: Software usado para implantar aplicativos dentro de containers virtuais</li>
 </ul>
 
 
