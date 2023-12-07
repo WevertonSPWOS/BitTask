@@ -34,10 +34,8 @@ section.box-input{
         padding: 0.8rem 0;
         border:1px solid transparent ;
         background-color: transparent;
-        &::placeholder{
-            @include tipografia.subtitulo(40px,#4E4E4E);
-
-        }
+        @include tipografia.titulo(65px);
+       
         
     }
 

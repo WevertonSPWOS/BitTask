@@ -7,7 +7,7 @@
         top: 5px;
         left: $esquerdaAfter;
         padding: to_rem.toRem(8px);
-        box-shadow: 1.5px -1.5px 0 1px #000 inset;
+        box-shadow: 1.5px -1.5px 0 1px #ffffff inset;
         border: solid transparent;
         border-width: 0 0 2px 2px;
         rotate: (180deg) ;
@@ -20,7 +20,7 @@
         left: $esquerdaBefore;
         height: 1.5rem;
         width: 3px;
-        background-color: #000;
+        background-color: #ffffff;
         rotate: (50deg);
     }
 }

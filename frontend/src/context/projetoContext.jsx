@@ -9,20 +9,33 @@ export const ProjetoContext = ({children}) => {
     const [dados, setDados] = React.useState()
     const [erro, setErro] = React.useState()
     const [loading, setLoading] = React.useState()
-    const local = window.localStorage.getItem('token');
+    const token = window.localStorage.getItem('token');
 
-    async function ObterProj(){
-      const req = await requisicao("http://localhost:3001/api/projetos/",null,"POST",  {Authorization : `Bearer ${local}`})
+    
+    async function CriarProj(){
+      const req = await requisicao("http://localhost:3001/api/projetos/",null,"POST",  {Authorization : `Bearer ${token}`})
       console.log(req)
-    }
-    async function EditarProj(){
+      return req
 
     }
-    async function DeletarProj(){
-
+    async function ObterProj(){
+      
+        const req = await requisicao(`http://localhost:3001/api/projetos/`,null, "GET", {Authorization : `Bearer ${token}`})
+        return req
     }
+
+    async function EditarProj(dados,id){
+      const req = await requisicao(`http://localhost:3001/api/projetos/${id}`,dados, "PUT", {Authorization : `Bearer ${token}`})
+      return req
+    }
+
+    async function DeletarProj(id){
+      const req = await requisicao(`http://localhost:3001/api/projetos/${id}`,null, "DELETE", {Authorization : `Bearer ${token}`})
+      return req
+    }
+    
     return(
-      <ProjetoGlobal.Provider value={{dados, erro, loading, ObterProj, EditarProj, DeletarProj}}>
+      <ProjetoGlobal.Provider value={{dados, erro, loading, CriarProj,ObterProj, EditarProj, DeletarProj}}>
         {children}
       </ProjetoGlobal.Provider>
     )
