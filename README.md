@@ -1,4 +1,9 @@
 # BitTask 📝✨
+![image](https://github.com/ryanNS3/BitTask/assets/131711415/cbc40ed6-87b0-4db0-9b5f-e6254a9ac22f)
+
+
+
+
 
 ## Sobre o projeto
 <p>Bem-vindo ao site da BitTask  - sua solução elegante e eficiente para gerenciar tarefas e projetos de forma simples e intuitiva. Desenvolvido utilizando a famosa stack MERN (MongoDB, Express, React, Node.js), juntamente ao Docker. Este projeto oferece um CRUD com sistema de cadastro e login de usuários, permitindo que os usuários visualizem, criem, atualizem e excluam suas respectivas tarefas e projetos.</p>
