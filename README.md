@@ -17,11 +17,11 @@
 
 ## Tecnologias Utilizadas 🛠️
 <ul>
-  <li>MongoDB: Banco de dados NoSQL para armazenar dados de forma flexível e escalável.</li>
-  <li>Express: Framework web para construir APIs robustas em Node.js.</li>
-  <li>React: Biblioteca JavaScript para construção de interfaces de usuário interativas.</li>
-  <li>Node.js: Ambiente de execução JavaScript do lado do servidor.</li>
-  <li>Docker: Software usado para implantar aplicativos dentro de containers virtuais</li>
+  <li><b>MongoDB</b>: Banco de dados NoSQL para armazenar dados de forma flexível e escalável.</li>
+  <li><b>Express:</b> Framework web para construir APIs robustas em Node.js.</li>
+  <li><b>React:</b> Biblioteca JavaScript para construção de interfaces de usuário interativas.</li>
+  <li><b>Node.js:</b> Ambiente de execução JavaScript do lado do servidor.</li>
+  <li><b>Docker:</b> Software usado para implantar aplicativos dentro de containers virtuais</li>
 </ul>
 
 
@@ -29,5 +29,9 @@
 | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/131712164?v=4" width=115><br><sub>Ryan</sub>](https://github.com/ryanNS3) |  [<img loading="lazy" src="https://avatars.githubusercontent.com/u/131711547?v=4" width=115><br><sub>Weverton</sub>](https://github.com/WevertonSPWOS) |  [<img loading="lazy" src="https://avatars.githubusercontent.com/u/131712437?v=4" width=115><br><sub>Rodrigo</sub>](https://github.com/Rodriguou) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/131711415?s=400&u=788cb9091dd633c9e37f634268fe05c2a143e905&v=4" width=115><br><sub>Kauê</sub>](https://github.com/kauetrigolo) |
 | :---: | :---: | :---: |  :---: |
 
+
+
+# Como acessar nosso site? 🤔
+Clone o repositório, instale as dependências neccessárias, configure o ambiente e acesse o http://localhost:5173.
 
 
