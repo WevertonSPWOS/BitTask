@@ -17,6 +17,9 @@ router.get('/', projectController.pegarTodos);
 // Rota para leitura de todas as tarefas com prioridade alta iterando sobre os projetos - READ
 router.get('/tarefas/prioridade', projectController.tarefasPrioridade);
 
+// Rota para leitura da quantidade de tarefas concluídas e não concluídas de todos projetos - READ
+router.get('/tarefas/desempenho', projectController.desempenho);
+
 // Rota para leitura de um único projeto - READ
 router.get('/:idProjeto', projectController.pegarUnico);
 

@@ -41,7 +41,7 @@ const pegarTodos = async (req, res) => {
 
   try {
     // Busca todos os projetos do usuário
-    const projetos = await Project.find({ usuario: usuarioId._id });
+    const projetos = await Project.find({ usuario: usuarioId });
 
     res.send(projetos);
   } catch (error) {
@@ -69,6 +69,29 @@ const tarefasPrioridade = async (req, res) => {
     res.send(tarefas);
   } catch (error) {
     res.status(500).send({ message: "Erro ao buscar tarefas com prioridade alta do usuário.", error: error.message });
+  }
+};
+
+// Obtém a quantidade de tarefas concluídas e não concluídas de cada projeto
+const desempenho = async (req, res) => {
+  const usuarioId = req.user._id;
+  if (!usuarioId) {
+    return res.status(401).send('Não autorizado');
+  }
+
+  try {
+    // Obtém todos os projetos do usuário
+    const projetos = await Project.find({ usuario: usuarioId });
+
+    // Extrai apenas os IDs dos projetos
+    const projetosIds = projetos.map(projeto => projeto._id);
+
+    // Obtém a quantidade de tarefas concluídas do usuário
+    const tarefas = await Task.aggregate([{$match: { projeto: { $in: projetosIds }, status: 'concluída'}}, {$count: "qtdConcluidas"}]);
+
+    res.send(tarefas);
+  } catch (error) {
+    res.status(500).send({ message: "Erro ao buscar tarefas concluídas do usuário.", error: error.message });
   }
 };
 
@@ -151,4 +174,4 @@ const remover = async (req, res) => {
   }
 };
 
-export default { criar, pegarTodos, tarefasPrioridade, pegarUnico, atualizar, remover };
+export default { criar, pegarTodos, tarefasPrioridade, desempenho, pegarUnico, atualizar, remover };
