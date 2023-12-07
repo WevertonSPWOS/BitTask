@@ -41,7 +41,7 @@ userSchema.methods.generateAuthToken = async function () {
         this.tokens = this.tokens.concat({ token });
         await this.save();
 
-        return { token, message: 'Logado com sucesso!', usuario: this._id };
+        return { token, message: 'Logado com sucesso!', usuario: this._id, usuario: this.nome };
     } catch (error) {
         throw new Error('Erro ao gerar o token.');
     }

@@ -21,7 +21,7 @@ const logar = async (req, res) => {
 
         // Gera um token de autenticação para o usuário
         const token = await user.generateAuthToken();
-        res.status(200).send({ token: token, nome: user.nome });
+        res.status(200).send(token);
     } catch (error) {
         res.status(500).send({ message: "Erro ao realizar o login.", error: error.message });
     }
