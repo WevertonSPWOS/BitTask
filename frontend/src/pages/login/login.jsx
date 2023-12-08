@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { InputComp } from "../../components/form/input";
 import login from "../../assets/Login.gif"
@@ -7,30 +7,75 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserGlobal } from "../../context/userContext";
 
 
+// toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ErroNotifi } from "../../components/notificacao/notificacao";
+
 const Login = () => {
 	const contextUser = useContext(UserGlobal)
 	const navegar = useNavigate();
 	const [data, setData] = useState({ email: "", senha: "" });
+	const [erro,setErro] = React.useState(false);
+	const logado = () => toast.success('Sucesso no login', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+        })
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.id]: input.value });
 	};
-
+	
+	
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		const logar = await contextUser.userLogin(data)
+		console.log(logar)
+
 		if (logar){
-			navegar("/home")
-		} else{
-			console.log(contextUser.erro)
-			console.log(contextUser)
+			logado()
+			setTimeout(() =>{
+				navegar("/home")
+				
+			},800)
 		}
+		 else {
+			setErro(true)
+		}
+			
 	
 	};
 	
     return(
+		<>
 
+			<ErroNotifi texto="erro" error={erro} setError={setErro} />
+			{contextUser.login &&
+			
+				<ToastContainer 
+						position="top-right"
+						autoClose={5000}
+						hideProgressBar={false}
+						newestOnTop={false}
+						closeOnClick
+						rtl={false}
+						pauseOnFocusLoss
+						draggable
+						pauseOnHover
+						theme="light"
+						limit={1}>
+
+				</ToastContainer>
+			}
+			
+			
+		
         <div className="box-login">
             <section className="box-gif-login">
                 <img src={login} alt="imagem de login" />
@@ -54,7 +99,7 @@ const Login = () => {
 
         </div>
 
-        
+		</>
     )
 }
 

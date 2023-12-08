@@ -8,6 +8,7 @@ import Projeto                        from "../pages/projeto/projeto";
 import { UserProvider } from "../context/userContext";
 import { TarefaContext } from "../context/tarefaContext";
 import { ProjetoContext } from "../context/projetoContext";
+import ProtectRouter from "../components/protectRouter/protectRouter";
 const Rotas = () =>{
     return(
     <BrowserRouter>
@@ -18,9 +19,27 @@ const Rotas = () =>{
                         <Route path="/"          element = {<TelaIncial />} />
                         <Route path="/cadastro"  element = {<Cadastro />}/>
                         <Route path="/login"     element = {<Login />}/>
-                        <Route path="/home"      element = {<Home />}/>
-                        <Route path="/tarefa"    element = {<Tarefa />}/>
-                        <Route path="/projeto"   element = {<Projeto />}/>
+                        <Route path="/home"      
+                        element = {
+                            <ProtectRouter>
+                                <Home />
+                            </ProtectRouter>
+                        }
+                        />
+                        <Route path="/tarefa"    
+                        element = {
+                            <ProtectRouter>
+                                <Tarefa />
+                            </ProtectRouter>
+                        }/>
+                        <Route path="/projeto"  
+                         element = {
+                            <ProtectRouter>
+                                <Projeto />
+
+                            </ProtectRouter>
+                         }
+                         />
                     </Routes>
                 </TarefaContext>
             </ProjetoContext>

@@ -31,10 +31,10 @@ const Desempenho = () => {
     <section className="box-desempenho">
         <h3 id="titulo-desempenho">Desempenho</h3>
         <article className="inner-desempenho">
-            {dados.map((item) =>{
+            {dados.map((item,index) =>{
                 return(
                     <CardDesempenho
-                        key={item.nome}
+                        key={index}
                         nome={item.nome}
                         concluida={item.tarefaC}
                         pendente={item.pendente}

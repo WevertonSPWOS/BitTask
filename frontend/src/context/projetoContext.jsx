@@ -12,8 +12,8 @@ export const ProjetoContext = ({children}) => {
     const token = window.localStorage.getItem('token');
 
     
-    async function CriarProj(){
-      const req = await requisicao("http://localhost:3001/api/projetos/",null,"POST",  {Authorization : `Bearer ${token}`})
+    async function CriarProj(dados){
+      const req = await requisicao("http://localhost:3001/api/projetos/",dados,"POST",  {Authorization : `Bearer ${token}`})
       console.log(req)
       return req
 

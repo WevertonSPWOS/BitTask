@@ -11,23 +11,30 @@ import { ModalEnviarProjeto,ModalEnviarTarefa } from '../../components/modal/mod
 import Desempenho from '../../components/desempenho/desempenho';
 import { UserGlobal } from '../../context/userContext';
 
+
+
 const Home = () => {
-
+    // dados do usuario
     const {data,login,loading,nome,userLogin,erro} = React.useContext(UserGlobal)
-
+    // variavel de estado que altera o estado do modal
     const [tarefa, setTarefa] = React.useState(false)
     const [projeto, setProjeto] = React.useState(false)
+    // função para sair ao cliccar fora do modal
     const handleCloseTarefa = () => setTarefa(false);
     const handleCloseProjeto = () => setProjeto(false);
   return (
+    <>
+    
+    
     <div className='body-home'>
+        
         <header className='box-nav'>
             <BarraNavegacao ariaLabel={"navegação primária"} fundo="#F0F5FF"/>
         </header>
 
         <div>
             <header className='box-header-secun'>
-                <p>Bom dia </p>
+                <p>Bom dia {} </p>
                 <section aria-label='dia de hoje' id='dia'>
                     <p>{moment().format('DD-MM-YYYY')}</p>
             
@@ -36,14 +43,6 @@ const Home = () => {
 
             <main id='box-main-home'>
                 <section className='card-criar'>
-                    <CardCriar
-                        titulo="Criar Tarefa"
-                        descricao={"Crie tarefas com data de entrega e com nível de prioridade "}
-                        img={ilustracaoTarefa}
-                        open={projeto}
-                        setOpen={setTarefa} 
-                        />
-                    <ModalEnviarTarefa aberto={tarefa} sair={handleCloseTarefa}/>
                     <CardCriar 
                         titulo="Criar Projeto"
                         descricao={"Crie uma lista de tarefas para organizar seu dia-a-dia."}
@@ -52,6 +51,14 @@ const Home = () => {
                         setOpen={setProjeto} 
                         />
                     <ModalEnviarProjeto aberto={projeto} sair={handleCloseProjeto} />
+                    <CardCriar
+                        titulo="Criar Tarefa"
+                        descricao={"Crie tarefas com data de entrega e com nível de prioridade "}
+                        img={ilustracaoTarefa}
+                        open={projeto}
+                        setOpen={setTarefa} 
+                        />
+                    <ModalEnviarTarefa aberto={tarefa} sair={handleCloseTarefa}/>
                 </section>
 
                 <section className='' aria-label="informações gerais">
@@ -66,6 +73,7 @@ const Home = () => {
         </div>
       
     </div>
+    </>
   )
 }
 

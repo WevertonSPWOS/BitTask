@@ -5,12 +5,12 @@ const RadioCompo = ({options,id,label,f}) => {
     <section>
       <label className='labelRadio'>{label}</label>
       <section className='box-radio' >
-          {options.map((item) =>{  
+          {options.map((item,index) =>{  
               return(
-                <section className='inner-radio'>
-                  <input className='radio-input' type='radio' value={item}  onChange={f} name={id}  id={id}/>
+                <section key={index} className='inner-radio'>
+                  <input className='radio-input'  type='radio' value={item}  onChange={f} name={id}  id={id}/>
                   
-                  <label htmlFor={item} key={item} className='item-radio' >
+                  <label htmlFor={item} className='item-radio' >
                       {item}
                   </label>
     

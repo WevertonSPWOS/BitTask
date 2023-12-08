@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 
 import { Box, Modal, Radio, Select, Typography } from "@mui/material"
 import { InputComp } from "../form/input"
@@ -9,34 +9,38 @@ import { BotaoEnviar } from "../button/botao"
 import RadioCompo from "../form/radio"
 import useAxios from "../../hooks/useAxios"
 import axios from "axios";
+import { ProjetoGlobal } from "../../context/projetoContext"
 import { UserGlobal } from '../../context/userContext';
+import { ErroNotifi, SucessNotifi } from "../notificacao/notificacao"
+import { Navigate, useLocation, useNavigate } from "react-router-dom"
 
 
-export const ModalApresentarP = ({aberto, sair}) =>{
-   
-    return(
-        <Modal className="Modal" open={aberto} onClose={aberto}>
-            <Box className="box-modal">
-                
-            </Box>
-            
-            
-        </Modal>
-        
-    )
-}
 export const ModalEnviarProjeto = ({aberto, sair}) =>{
-    const local = window.localStorage.getItem('token');
-    console.log(local)
+    // variaveis de estado para a notificação
+    const [sucess, setSucess] = React.useState(false)
+    const [error, setError] = React.useState(false)
+    // dados do usuário
     const {data,login,loading,nome,user,Login,erro} = React.useContext(UserGlobal)
-    const {requisicao} = useAxios();
-
+    const {CriarProj} = React.useContext(ProjetoGlobal)
     // função post de projeto
+
+    
     async function handleSubmit(event){
         event.preventDefault()
-        const req = await requisicao(`http://localhost:3001/api/projetos/`,dados,"POST", {Authorization : `Bearer ${local}`})
-        console.log(req)
-        
+        const req = await CriarProj(dados)
+      
+        if (req.res.status == 201){
+            setSucess(true)
+            setTimeout(() =>{
+                sair()
+
+            }, 800)
+           
+        }
+        else{
+            setError(true)
+        }
+
     }
 
     // dados do formulário
@@ -53,8 +57,12 @@ export const ModalEnviarProjeto = ({aberto, sair}) =>{
     const opcoesCategoria = ["pessoal", "academico", "profissional"]
     
     return(
+       
         <Modal  open={aberto} onClose={sair}  className="modal">
             <Box className="box-modal">
+            <ErroNotifi texto="Erro ao criar o projeto" error={error} setError={setError}/>
+            <SucessNotifi texto="Projeto criado!" sucess={sucess} setSucess={setSucess} />
+
                 <section id={aberto ? "" : "sair"} className="inner-modal">
                     <header>
                         <h3 className="titulo-modal-criar">Criar projeto</h3>
@@ -89,6 +97,7 @@ export const ModalEnviarProjeto = ({aberto, sair}) =>{
             </Box>
             
         </Modal>
+      
     )
 }
 

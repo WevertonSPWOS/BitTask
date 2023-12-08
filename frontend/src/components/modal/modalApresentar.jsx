@@ -8,14 +8,28 @@ import CardTarefas from '../card/cardTarefas'
 import { ProjetoGlobal } from '../../context/projetoContext'
 import { BotaoEnviar } from '../button/botao'
 import RadioCompo from '../form/radio'
+import { ErroNotifi, SucessNotifi } from '../notificacao/notificacao'
 
 export const ModalApresentarP = ({aberto, fechado,dados,f}) => {
     const {EditarProj, DeletarProj} = useContext(ProjetoGlobal)
     const [desabilitado, setDesabilitado] = React.useState(true)
 
+    // variaveis de controle de notificações
+    const [suceso, setSucesso] = React.useState(false)
+    const [erro, setErro] = React.useState(false)
+
+    // requisição 
     async function handleEditar(){
         const req = await EditarProj(form, dados.id)
-        console.log(req)
+        console.log(req.res)
+        if (req.res.status == 200){
+            setSucesso(true)
+            setDesabilitado(true)
+        }
+
+        else {
+            setErro(true)
+        }
     }
 
     //habilita a edição 
@@ -27,7 +41,16 @@ export const ModalApresentarP = ({aberto, fechado,dados,f}) => {
     async function UseExcluir(event){
         event.preventDefault()
         const req = await DeletarProj(dados.id)
-        console.log(req)
+        if (req.res.status == 200){
+            setSucesso(true)
+            setTimeout(() =>{
+                fechado()
+            }, 500)
+
+        } else{
+            setErro(true)
+        }
+        
         
     }
 
@@ -62,10 +85,13 @@ export const ModalApresentarP = ({aberto, fechado,dados,f}) => {
     ])
 
   return (
+    <>
+
+    <SucessNotifi sucess={suceso} setSucess={setSucesso} texto="Ação concluida" time={500}/>
+    <ErroNotifi error={erro} setError={setErro} texto='Ocorreu algum erro' time={500} /> 
     <Modal className="modal" open={aberto} onClose={fechado}>
         <Box className="box-modal">
             <section className='inner-modal'>
-
                 <section className='tag-menu'>
                     <Tag nome={form.categoria} cor="#3D77FB" corLetra="#fff" padding="0.8rem 1.3rem" />
                     <DropMenu editar={UseEditar} deletar={UseExcluir} />
@@ -92,6 +118,8 @@ export const ModalApresentarP = ({aberto, fechado,dados,f}) => {
     
     
     </Modal>
+
+    </>
   )
 }
 

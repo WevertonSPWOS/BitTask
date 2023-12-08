@@ -1,11 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserGlobal } from '../../context/userContext'
 
-const ProtectRouter = () => {
-  return (
-    <article>
-      
-    </article>
-  )
+import { Navigate, useNavigate } from 'react-router-dom'
+const ProtectRouter = ({children}) => {
+  const token = window.localStorage.getItem('token')
+  return token  ? children : <Navigate  to="/login"/>
 }
-
-export default ProtectRouter
+export default ProtectRouter;

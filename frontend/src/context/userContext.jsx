@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useAxios from "../hooks/useAxios";
-
+import { base } from "../server/server";
 export const UserGlobal = createContext();
 
 
@@ -12,13 +12,13 @@ export const UserProvider = ({children}) =>{
     const [data, setData]       =   React.useState(null)
     const [login, setLogin]     =   React.useState(null)
     const [loading, setLoading] =   React.useState(false)
-    const [nome,setNome] = React.useState('ryan')
+    const [nome,setNome] = React.useState()
     const [user, setUser] = React.useState()
     const [token, setToken] = React.useState('')
 	const [erro,setErro] = React.useState(null)
 	const axios = useAxios()
 	
-	
+	const endpoint = '/login'
     // função de login 
     async function userLogin(data){
 		setErro(null)
@@ -28,17 +28,15 @@ export const UserProvider = ({children}) =>{
 		
 		try {
 			const req = await axios.requisicao('http://localhost:3001/api/login',data,"POST")
-			console.log(req.res.status)
-			console.log(req.res)
-			console.log(req.res.data.usuario)
-			console.log(req.res.data.token)
-			
+
 			window.localStorage.setItem('token',req.res.data.token)
 			
 			if ( req.res.status == 200){
 				setToken(req.res.data.token)
 				setLogin(true)
 				setUser(req.res.data.usuario)
+				setData(req.res)
+				window.localStorage.setItem('usuario',req.res.data.usuario)
 				return true
 
 			}

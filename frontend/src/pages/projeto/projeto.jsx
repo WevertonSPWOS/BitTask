@@ -20,17 +20,17 @@ const Projeto = () => {
   useEffect(()=>{
     async function res(){
       const req = await requisicao(`http://localhost:3001/api/projetos/`,null, "GET", {Authorization : `Bearer ${token}`})
-      console.log(req)
-      console.log(req.res.status)
       setProjetos(req.res.data)
     }
     
     res()
 
   }, [])
-  console.log(projetos)
+
   const [abrir, setAbrir] = React.useState(false)
   const handleClose = (() => setAbrir(false))
+
+
   if (projetos){
 
     return (
@@ -53,7 +53,6 @@ const Projeto = () => {
                 nome={item.nome}
                 decricao={item.descricao}
                 categoria={item.categoria}
-                // tarefa={item.tarefas}
                 fundo="#2F2F2F"
                 corTexto="#FFFFFF"
                 id={item._id}
