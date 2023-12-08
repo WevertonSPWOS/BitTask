@@ -27,7 +27,7 @@ export const UserProvider = ({children}) =>{
 		
 		
 		try {
-			const req = await axios.requisicao('http://localhost:3001/api/login',data,"POST")
+			const req = await axios.requisicao(`${base}/login`,data,"POST")
 
 			window.localStorage.setItem('token',req.res.data.token)
 			

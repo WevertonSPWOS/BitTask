@@ -1,6 +1,6 @@
 import React, { createContext } from 'react'
 import useAxios from "../hooks/useAxios";
-
+import { base } from '../server/server';
 
 export const ProjetoGlobal = createContext()
 
@@ -13,24 +13,22 @@ export const ProjetoContext = ({children}) => {
 
     
     async function CriarProj(dados){
-      const req = await requisicao("http://localhost:3001/api/projetos/",dados,"POST",  {Authorization : `Bearer ${token}`})
-      console.log(req)
+      const req = await requisicao(`${base}/projetos/`,dados,"POST",  {Authorization : `Bearer ${token}`})
       return req
 
     }
     async function ObterProj(){
-      
-        const req = await requisicao(`http://localhost:3001/api/projetos/`,null, "GET", {Authorization : `Bearer ${token}`})
+        const req = await requisicao(`${base}/projetos/`,null, "GET", {Authorization : `Bearer ${token}`})
         return req
     }
 
     async function EditarProj(dados,id){
-      const req = await requisicao(`http://localhost:3001/api/projetos/${id}`,dados, "PUT", {Authorization : `Bearer ${token}`})
+      const req = await requisicao(`${base}/projetos/${id}`,dados, "PUT", {Authorization : `Bearer ${token}`})
       return req
     }
 
     async function DeletarProj(id){
-      const req = await requisicao(`http://localhost:3001/api/projetos/${id}`,null, "DELETE", {Authorization : `Bearer ${token}`})
+      const req = await requisicao(`${base}/projetos/${id}`,null, "DELETE", {Authorization : `Bearer ${token}`})
       return req
     }
     

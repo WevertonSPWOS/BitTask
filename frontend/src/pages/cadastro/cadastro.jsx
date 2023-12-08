@@ -5,7 +5,7 @@ import { useState } from "react";
 import cadastro from "../../assets/cadastro.gif"
 import { BotaoEnviar } from "../../components/button/botao";
 import useForm from "../../hooks/useForm";
-
+import { base } from "../../server/server";
 
 const Cadastro = () =>{
 	const nome = useForm(null);
@@ -28,7 +28,7 @@ const Cadastro = () =>{
 		e.preventDefault();
 		try {
 
-			const url = "http://localhost:3001/api/cadastro"; //Mudar a rota da API quando for hospedada 😒
+			const url = `${base}/cadastro`; //Mudar a rota da API quando for hospedada 😒
 			const { data: res } = await axios.post(url, data);
 			navigate("/login");
 			console.log(res.message);

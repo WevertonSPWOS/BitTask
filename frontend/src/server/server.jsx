@@ -1,3 +1,3 @@
 import axios from "axios"
 
-export const base = "http://localhost:3001/api";
+export const base = "https://bittask.cyclic.app/api";
