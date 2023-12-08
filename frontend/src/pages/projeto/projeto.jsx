@@ -7,6 +7,7 @@ import CardProjeto from '../../components/card/cardProjeto'
 import useAxios from "../../hooks/useAxios";
 import { UserGlobal } from '../../context/userContext';
 import { ModalEnviarProjeto } from '../../components/modal/modal'
+import { base } from '../../server/server'
 
 const Projeto = () => {
   const {data,loading,erro} = React.useContext(UserGlobal);
@@ -19,7 +20,7 @@ const Projeto = () => {
 
   useEffect(()=>{
     async function res(){
-      const req = await requisicao(`http://localhost:3001/api/projetos/`,null, "GET", {Authorization : `Bearer ${token}`})
+      const req = await requisicao(`${base}/projetos/`,null, "GET", {Authorization : `Bearer ${token}`})
       setProjetos(req.res.data)
     }
     

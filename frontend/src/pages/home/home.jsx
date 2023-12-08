@@ -15,7 +15,8 @@ import { UserGlobal } from '../../context/userContext';
 
 const Home = () => {
     // dados do usuario
-    const {data,login,loading,nome,userLogin,erro} = React.useContext(UserGlobal)
+    const {data,login,loading,userLogin,erro} = React.useContext(UserGlobal)
+    const nome = window.localStorage.getItem('usuario')
     // variavel de estado que altera o estado do modal
     const [tarefa, setTarefa] = React.useState(false)
     const [projeto, setProjeto] = React.useState(false)
@@ -34,7 +35,7 @@ const Home = () => {
 
         <div>
             <header className='box-header-secun'>
-                <p>Bom dia {} </p>
+                <p>Bom dia, {nome} </p>
                 <section aria-label='dia de hoje' id='dia'>
                     <p>{moment().format('DD-MM-YYYY')}</p>
             
