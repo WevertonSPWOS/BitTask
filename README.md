@@ -6,9 +6,11 @@
 
 
 ## Sobre o projeto
-<p>Bem-vindo ao site da BitTask  - sua solução elegante e eficiente para gerenciar tarefas e projetos de forma simples e intuitiva. Desenvolvido utilizando a famosa stack MERN (MongoDB, Express, React, Node.js), juntamente ao Docker. Este projeto oferece um CRUD com sistema de cadastro e login de usuários, permitindo que os usuários visualizem, criem, atualizem e excluam suas respectivas tarefas e projetos.</p>
+<p>Bem-vindo ao site da BitTask  - sua solução elegante e eficiente para gerenciar tarefas e projetos de forma simples e intuitiva. Desenvolvido utilizando a famosa stack MERN (MongoDB, Express, React, Node.js), juntamente ao Docker. Este projeto oferece um CRUD com sistema de cadastro e login de usuários, permitindo que os usuários visualizem, criem, atualizem e excluam suas respectivas tarefas e projetos.
+</p>
  
-
+## Documentação 📄
+Você pode acessar a documentação da nossa API clicando <a href="https://rapidapi.com/kauetrigolodamaceno/api/bittask-api">neste link</a>
 
 ## Recursos Principais 🚀
 <ul>
@@ -29,7 +31,7 @@
 </ul>
 
 
-# DevTeam
+# DevTeam 👨‍💻
 | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/131712164?v=4" width=115><br><sub>Ryan</sub>](https://github.com/ryanNS3) |  [<img loading="lazy" src="https://avatars.githubusercontent.com/u/131711547?v=4" width=115><br><sub>Weverton</sub>](https://github.com/WevertonSPWOS) |  [<img loading="lazy" src="https://avatars.githubusercontent.com/u/131712437?v=4" width=115><br><sub>Rodrigo</sub>](https://github.com/Rodriguou) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/131711415?s=400&u=788cb9091dd633c9e37f634268fe05c2a143e905&v=4" width=115><br><sub>Kauê</sub>](https://github.com/kauetrigolo) |
 | :---: | :---: | :---: |  :---: |
 
